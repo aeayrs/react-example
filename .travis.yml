@@ -1,0 +1,16 @@
+sudo: required
+services:
+  - docker
+
+script:
+  - docker build -t aeayrs/react-example2 .
+  - docker images aeayrs/react-example2
+
+before_deploy:
+  - docker login -u aeayrs -p ZtYz56EihJ@
+
+deploy:
+  provider: script
+  script: docker push aeayrs/react-example2
+  on:
+    branch: master
